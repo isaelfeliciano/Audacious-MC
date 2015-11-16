@@ -1,0 +1,251 @@
+@font-face{
+	font-family: 'dosis-light';
+	src: url(../fonts/dosis-light.ttf);
+}
+
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+body
+{
+	width: 100%;
+}
+a
+{
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.pointer
+{
+	cursor: pointer;
+}
+.center
+{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center-v:before
+{
+	content: "";
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+.center-v
+{
+	height: 100%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.album-cover
+{
+	width: 50%;
+}
+
+.box-1
+{
+	padding-left: 3.5em;
+}
+.my-pure-box
+{
+	margin: 1px;
+}
+
+.my-content
+{
+	background-image: url(../img/blurred-blue.jpg);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.intro-page
+{
+	background-image: url(../img/blurred-blue.jpg);
+	background-position: center 20;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.bt-open
+{
+	margin-top: 50%;
+	color:white;
+}
+.bt-open:hover
+{
+	margin-top: 50%;
+	color:green;
+}
+
+.connection-page
+{
+	background-image: url(../img/blurred-blue.jpg);
+	background-position: center 50;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.white
+{
+	color: white;
+}
+
+.song-info
+{
+	font-family: dosis-light, sans-serif;
+	font-size: 1.1em;
+	letter-spacing: 0.02em;
+}
+
+/* New styles*/
+
+#headerWrapper
+{
+	display: inline-block;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	height: 2.5em;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #0878DE;
+	z-index: 9999;
+}
+#headerWrapper #contentWrapper
+{
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	height:100%;
+}
+#contentWrapper span
+{
+	height: 100%;
+	text-align: center;
+	color: #ffffff
+}
+
+#footerWrapper
+{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	height: 3em;
+	/*vertical-align: middle;*/
+	/*text-align: center;*/
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #0878DE;
+	color: white;
+}
+
+#footerWrapper a
+{
+	float: right;
+}
+
+#footerWrapper a i
+{
+	margin-top: 0.25em;
+}
+
+.left
+{
+	float: left;
+	padding: 0 0.5em 0 0.5em;
+	display: inline-block;
+	vertical-align: middle;
+}
+.right
+{
+	float: right;
+	padding: 0 0.5em 0 0.5em;
+}
+
+.first-row
+{
+	margin-top: 0.5em;
+}
+.first-row .artist
+{
+	display: block;
+	font-size: 75%;
+}
+.first-row .title
+{
+	display: block;
+}
+
+.second-row
+{
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	margin-top: 1.5em;
+}
+.second-row span
+{
+	height: 100%;
+	text-align: center;
+	color: #ffffff
+}
+
+.song-datos
+{
+	overflow: hidden;
+ 	position: relative;
+}
+
+.song-datos .title 
+{
+	white-space: nowrap;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	text-align: center;
+}
+.song-datos .artist
+{
+	white-space: nowrap;
+}
+
+.scroll
+{
+	/* Starting position */
+	-moz-transform:translateX(100%);
+	-webkit-transform:translateX(100%);	
+	transform:translateX(100%);
+	/* Apply animation to this element */	
+	-moz-animation: song-datos 15s linear infinite;
+	-webkit-animation: song-datos 15s linear infinite;
+	animation: song-datos 15s linear infinite;
+	}
+	/* Move it (define the animation) */
+	@-moz-keyframes song-datos {
+	 0%   { -moz-transform: translateX(100%); }
+	 100% { -moz-transform: translateX(-100%); }
+	}
+	@-webkit-keyframes song-datos {
+	 0%   { -webkit-transform: translateX(100%); }
+	 100% { -webkit-transform: translateX(-100%); }
+	}
+	@keyframes song-datos {
+	 0%   { 
+		 -moz-transform: translateX(100%); /* Firefox bug fix */
+		 -webkit-transform: translateX(100%); /* Firefox bug fix */
+		 transform: translateX(100%); 		
+	 }
+	 100% { 
+		 -moz-transform: translateX(-100%); /* Firefox bug fix */
+		 -webkit-transform: translateX(-100%); /* Firefox bug fix */
+		 transform: translateX(-100%); 
+	 }
+	}
+}

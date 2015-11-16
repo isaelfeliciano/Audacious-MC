@@ -1,0 +1,45 @@
+<!-- Header -->
+<div id="headerWrapper">
+	<div id="contentWrapper">
+		<span class="left center-v">Now Playing</span>
+		<a href="javascript:angular.noop()" class="right center-v"><i class="fa fa-ellipsis-h"></i></a>
+	</div>
+</div>
+
+<!-- Cover -->
+<div id="cover">
+	
+</div>
+
+<!-- Line diving playback controls and cover -->
+<div id="line-divisor"></div>
+
+<!-- Footer - Playback controls -->
+<div id="footerWrapper" style="height: 10em">
+	<div class="first-row pure-g center">
+		<div class="pure-u-1-5"><span><i class="fa fa-list fa-2x"></i></span></div>
+		<div class="song-datos pure-u-3-5">
+			<span id="current-title"class="title">{{ currentSong.title }}</span>
+			<span class="artist">{{ currentSong.artist }}</span>
+		</div>
+		<div class="pure-u-1-5"><span><i class="fa fa-volume-up fa-2x"></i></span></div>
+	</div>
+	
+	<div class="second-row pure-g center">
+		<div class="pure-u-3-24 center-v">
+			<span><i class="pointer fa" ng-click="btRandom()">&#xf074;</i></span>
+		</div>
+		<div class="pure-u-3-24 center-v">
+			<span><i class="pointer fa fa-2x" ng-click="btBackward()">&#xf048;</i></span>
+		</div>
+		<div class="pure-u-5-24 center-v">
+			<span><i class="pointer fa fa-4x" ng-click="playpause()">&#xf01d;</i></span>
+		</div>
+		<div class="pure-u-3-24 center-v">
+			<span><i class="pointer fa fa-2x" ng-click="btForward()">&#xf051;</i></span>
+		</div>
+		<div class="pure-u-3-24 center-v">
+			<span><i class="pointer fa" ng-click="btReapet()">&#xf01e;</i></span>
+		</div>
+	</div>
+</div>

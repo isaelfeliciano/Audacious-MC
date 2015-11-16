@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, inicial-scale=1">
+	<title>Audacious Control APP</title>
+
+	<!-- <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"> -->
+	<link rel="stylesheet" href="css/pure.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link href="css/ordered-list-styles.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-1.9.1.min.js"></script>	
+	<script src="js/angular.min.js"></script>	
+	<script src="js/angular-route.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+
+</head>
+<body ng-app="ACA">
+
+<div ng-view></div>
+
+	<!-- Modules -->
+	<script src="js/app.js"></script>
+
+	<!-- Controllers -->
+	<script src="js/controllers/MainController.js"></script>
+
+	<!-- Services -->
+	<script src="js/services/Services.js"></script>
+	<script src="js/services/playlist.js"></script>
+
+	<!-- Directives -->
+<script src="js/socket.io.controller.js"></script>	
+</body>
+</html>
