@@ -34,7 +34,7 @@ router.post('/playpause', function (req, res){
 
 router.post('/next-previous', function (req, res){
 	var cmd = (req.body.cmd === 'next') ? 'playlist-advance' : 'playlist-reverse';
-	var playPause = exec('audtool '+ cmd, function (e, so, se){
+	var nextPrevious = exec('audtool '+ cmd, function (e, so, se){
 		if(e){
 			res.send(e);
 		}else{
@@ -43,9 +43,16 @@ router.post('/next-previous', function (req, res){
 	});
 });
 
-router.hola = function(sockt){
-	socket = sockt;
-}
+router.post('/start-audacious', function (req, res){
+	var startAudacious = exec('audacious &', function (e, sto, ste){
+		/*if(e) { 
+			res.send(e) 
+		}else { 
+			res.send("OK") 
+		} */
+	});
+	res.send("OK");
+});
 
 module.exports = router;
  

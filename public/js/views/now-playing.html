@@ -17,7 +17,7 @@
 <!-- Footer - Playback controls -->
 <div id="footerWrapper" style="height: 10em">
 	<div class="first-row pure-g center">
-		<div class="pure-u-1-5"><span><i class="fa fa-list fa-2x"></i></span></div>
+		<div class="pure-u-1-5"><span><i class="pointer fa fa-list fa-2x" ng-click="btPlaylist()"></i></span></div>
 		<div class="song-datos pure-u-3-5">
 			<span id="current-title"class="title">{{ currentSong.title }}</span>
 			<span class="artist">{{ currentSong.artist }}</span>
@@ -32,8 +32,8 @@
 		<div class="pure-u-3-24 center-v">
 			<span><i class="pointer fa fa-2x" ng-click="btBackward()">&#xf048;</i></span>
 		</div>
-		<div class="pure-u-5-24 center-v">
-			<span><i class="pointer fa fa-4x" ng-click="playpause()">&#xf01d;</i></span>
+		<div id="bt-play" class="circle-wrapper pure-u-5-24 center-v">
+			<span><i class="bt-play center-v pointer fa fa-2x" ng-click="playpause()" style="padding-top:0.1em;">&#xf04b;</i></span>
 		</div>
 		<div class="pure-u-3-24 center-v">
 			<span><i class="pointer fa fa-2x" ng-click="btForward()">&#xf051;</i></span>

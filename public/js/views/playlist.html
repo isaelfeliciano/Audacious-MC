@@ -1,5 +1,8 @@
 <div id="headerWrapper">
-	
+	<div id="contentWrapper">
+		<span class="left center-v">Playlist</span>
+		<a href="javascript:angular.noop()" class="right center-v"><i class="fa fa-ellipsis-h"></i></a>
+	</div>
 </div>
 <ol>
 	<li class="pure-u-1-1 rectangle-list" ng-repeat="song in playlist">
@@ -7,9 +10,10 @@
 	</li>
 </ol>
 
-<div id="footerWrapper" class="pure-g">
+<div id="footerWrapper" class="pure-g pointer">
 	<!-- <a class="pure-button" ng-click="previous()"><i class="fa fa-step-backward"></i></a> -->
-	<div class="pure-u-4-5"><p>{{ currentSong.artist }} - {{ currentSong.title }}</p></div>
-	<div class="pure-u-1-5"><a href="javascript:angular.noop()" ng-click="playpause()"><i class="fa fa-play fa-2x"></i></a></div>
+	<div class="pure-u-4-5 center-v-wrapper" ng-click="btNowplaying()"><p class="center-v" style="padding-left:0.5em;">{{ currentSong.artist }} - {{ currentSong.title }}</p></div>
+	<!-- Play icon -->
+	<div class="pure-u-1-5 center center-v-wrapper"><span href="javascript:angular.noop()" ng-click="playpause()"><i class="fa fa-2x center-v">&#xf04b;</i></span></div>
 	<!-- <a class="pure-button" ng-click="next()"><i class="fa fa-step-forward"></i></a> -->
 </div>
