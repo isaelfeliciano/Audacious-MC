@@ -1,33 +1,92 @@
 app.controller('MainController', ['$scope', '$http', '$window', 'playlist', 'postRequest', 'audaciousStatus', function ($scope, $http, $window, playlist, postRequest, audaciousStatus){
 	$scope.ip = '10.0.0.219';
 
+	Storage.prototype.setObj = function(key, obj){
+		return this.setItem(key, JSON.stringify(obj))
+	};
+
+	Storage.prototype.getObj = function(key){
+		return JSON.parse(this.getItem(key))
+	};
+
 	var checkStatus = function () {
 		console.log('Checking status');
 		$http.get('http://10.0.0.219:3000/audaciousApi/audaciousStatus')
 		.success(function (res){
 			if(res === 'off'){
 				window.location = '/#/start-audacious';
-			}else{
-				// $window.location.href = 'http://10.0.0.219:3000/#/nowplaying';
+			} else{
+				var e = document.getElementById('bt-play');
+				if (!document.getElementById('playback-status')){
+					res = res.replace(/\s/g, '');
+					if (res === 'playing'){
+						e.innerHTML = '&#xf04c;<span id="playback-status">playing</span>';
+					} else{
+						e.innerHTML = '&#xf04b;<span id="playback-status">paused</span>';
+					}
+				}
 			}
 		});
 	}
 	checkStatus();
 
+	var toggleIcons = function (){
+		var e = document.getElementById('bt-play');
+		var ee = document.getElementById('playback-status');
+		console.log(ee.innerHTML);
+		var innerHtml = '&#xf04c;';
+		if (ee.innerHTML === 'paused'){
+			// Toggle icons
+			e.innerHTML = '&#xf04c;<span id="playback-status">playing</span>';
+		} else{
+			e.innerHTML = '&#xf04b;<span id="playback-status">paused</span>';
+		}
+	};
+
+	/*(function setButtonsStatus (){
+		$http({
+			method: 'GET',
+			url: '/audaciousApi/playbackStatus'
+		})
+		.success(function (res){
+			console.log('hola ' +res);
+			var e = document.getElementById('playback-status');
+			if (res.replace(/\s/g, '') === 'paused'){
+				e.innerHTML = '&#xf04b;<span id="playback-status" >paused</span>';
+			} else{
+				e.innerHTML = 'hola';
+			}
+		});
+	})();*/
+
 	// Socket.io setup
 	var socket = io.connect('http://'+$scope.ip+':3001/', {
-		reconnection: true
+		'reconnection': true,
+		'reconnectionDelayMax': 2000,
+		'timeout': 3000
 	});
-	socket.on('event', function(data){
+	socket.on('event', function (data){
 		$scope.songChange();
 	});
 
-	playlist.success(function (data){
-		$scope.playlist = data.songs;
+	socket.on('disconnect', function (){
+		// What to do when socket disconnect
 	});
-	playlist.error(function (data){
-		console.log(data);
-	});
+	
+	if (localStorage.getItem('playlist')){
+		$scope.playlist = localStorage.getObj('playlist').songs;
+		console.log('Stored Playlist: ');
+		// console.log(storedPlaylist);
+	}else {
+		playlist.success(function (data){
+			console.log("playlist downloaded: ");
+			console.log(data);
+			$scope.playlist = data.songs;
+		});
+		playlist.error(function (data){
+			console.log(data);
+		});
+	}
 
 	$scope.playSong = function (item) {
 		checkStatus();
@@ -65,13 +124,12 @@ app.controller('MainController', ['$scope', '$http', '$window', 'playlist', 'pos
 	}
 
 	$scope.playpause = function (){
-		var e = document.getElementById('bt-play');
-		e.innerHTML = '<span><i class="bt-play center-v pointer fa fa-2x" ng-click="playpause()" style="padding-top:0.1em;">&#xf04c;</i></span>';
 		checkStatus();
 		postRequest.fn({
 			url: '/audaciousCmd/playpause',
 			data: {cmd: 'playpause'}
 		});
+		toggleIcons();
 	}
 
 	$scope.btPlaylist = function (){

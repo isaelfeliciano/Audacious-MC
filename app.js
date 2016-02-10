@@ -16,11 +16,22 @@ var app = express();
 var myhttp = require('http').Server(app);
 var io = require('socket.io')(myhttp);
 io.on('connection', function(sockt){
-  socket = sockt;
+  // socket = sockt;
+  console.log('Socket.io: New connection');
+  console.log('  '+sockt.id);
+  console.log('  '+sockt.request.headers.cookie);
+  console.log('  '+sockt.handshake.headers['user-agent']);
+  io.emit('event', {data: 'songChange'});
+});
+io.on('reconnection', function (socket){
+  console.log('Socket.io: Reconnection');
+});
+io.on('disconnect', function(){
+  console.log('Socket.io: Disconnection')
 });
 
 app.use('/audacious/songChange', function (req, res){
-  socket.emit('event', {data: 'songChange'});
+  io.emit('event', {data: 'songChange'});
 });
 
 myhttp.listen(3001, function(){

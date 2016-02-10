@@ -1,2 +1,15 @@
 // Dropdown menu in Header
+	// Refresh playlist
 // Toggle buttons
+// Test to implement Page Visibility API
+// Implement retreiving of the cover image 
+	eyeD3 --write-images=./ "Higher Self Ft. Lauren Mason - Ghosts (Original Mix).mp3"
+// Develop a logic for the feature of Queue List
+	Esta lista es controlada por la aplicacion web pudiendo modificar el orden desde esta,
+	desde la misma web app se envia la siguiente cancion a reproducir cuando llega al final la anterior
+	y eliminando de la lista de reproduccion local.
+	
+// Set volume controller
+// Song search
+
+

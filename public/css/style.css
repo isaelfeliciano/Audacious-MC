@@ -200,7 +200,7 @@ a
 	width: 100%;
 	margin-top: 1.5em;
 }
-.second-row span
+.second-row span:first-child
 {
 	height: 100%;
 	text-align: center;
@@ -290,3 +290,14 @@ a
 {
 	text-shadow: 0px 0px 7px rgba(150, 150, 150, 1);
 }
+#playback-status{display: none; }
+
+/*Buttons Styles*/
+
+#bt-random
+{
+	color: #35342f;
+	font-size: 1.4em;
+}
+
+/*Buttons Styles*/
